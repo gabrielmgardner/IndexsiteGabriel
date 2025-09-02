@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meu Site com Função Python</title>
+</head>
+<body>
+    <h1>Bem-vindo ao Meu Site</h1>
+    <p>Clique no botão para ver uma mensagem gerada pelo Python:</p>
+    
+    <button id="showMessageButton">Mostrar Mensagem</button>
+    <p id="messagePlaceholder"></p>
+
+    <script>
+        document.getElementById("showMessageButton").addEventListener("click", function() {
+            fetch("/python-script.py")
+                .then(response => response.text())
+                .then(message => {
+                    document.getElementById("messagePlaceholder").textContent = message;
+                })
+                .catch(error => {
+                    console.error("Erro ao buscar mensagem:", error);
+                });
+        });
+    </script>
+</body>
+</html>
